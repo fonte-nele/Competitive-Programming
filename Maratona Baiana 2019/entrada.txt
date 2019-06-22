@@ -1,0 +1,5 @@
+4 1000 
+500 1500 ilheus 
+500 2001 ilheu
+500 2000 ilheus
+500 2000 ilheu

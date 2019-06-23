@@ -1,8 +1,9 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+1
+aabccbba
+2
+abc
+abbc
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +35,41 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n, q;
+    string caso, querie;
     cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
+    
+    while(n--)
     {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
+        cin >> caso;        
+        cin >> q;
+        while(q--)
         {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+            bool flag = false;
+            cin >> querie;
+            int tam = querie.size(), tam2 = caso.size();
+            int pos = 0, pos1 = 0;
 
-            cont++;
+            while(pos < tam && pos1 < tam2)
+            {
+                if(querie[pos] == caso[pos1])
+                {
+                    pos++;
+                    pos1++;
+                }
+                else
+                    pos1++;
+
+                if(pos == tam)
+                    flag = true;
+            }
+
+            if(flag)
+                cout << "Yes" << endl;
+            else
+                cout << "No" << endl;
         }
     }
-    cout << endl;
 
     return 0;
 }

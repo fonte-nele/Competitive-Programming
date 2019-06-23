@@ -1,8 +1,16 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+9
+1101011
+1100101
+1100101
+1110000
+100000
+1100011
+1100001
+1101100
+1101101
+1
+1100101
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +42,30 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int n;
+    string a;
 
-            cont++;
+    while(cin >> n)
+    { 
+        f(0, n)
+        {
+            int num = 0;
+            cin >> a;
+            reverse(a.begin(), a.end());
+            //cout << a << endl;
+            fr(0, (int)a.size())
+            {
+                if(a[j] == '1'){
+                    //cout << j << " ";
+                    num += pow(2, j);
+                }
+            }
+            char aux = num;
+            //cout << num << endl;
+            cout << aux;
         }
+        cout << endl;
     }
-    cout << endl;
 
     return 0;
 }

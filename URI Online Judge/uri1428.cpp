@@ -1,8 +1,8 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
 3
-9 33 5
+6 6
+7 7
+9 13
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +34,16 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
+    int quant, m, n, cont;
+    string nome;
     cin >> quant;
-    vector<int> v(quant);
     f(0, quant)
     {
-        cin >> num;
-        v[i] = num; 
+        //cont = 0;
+        cin >> m >> n;
+        cont = (n/3) * (m /3);
+        cout << cont << endl;
     }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
-
-            cont++;
-        }
-    }
-    cout << endl;
 
     return 0;
 }

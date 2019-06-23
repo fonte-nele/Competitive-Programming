@@ -1,8 +1,12 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+6 3
+2 1 3
+3 1 2 3
+2 1 3
+2 1 2
+2 2 3
+1 2
+3 1 2 3
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +38,16 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n;
+    int base, expo;
     cin >> n;
-    int apagar[100005] = {0};
+
     f(0, n)
     {
-        cin >> num;
-        apagar[num] = 1;;
+        cin >> base >> expo;
+        int res = 1 + (expo * log10(base));
+        cout << res << endl;
     }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
-
-            cont++;
-        }
-    }
-    cout << endl;
 
     return 0;
 }

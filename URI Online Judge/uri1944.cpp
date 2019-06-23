@@ -1,8 +1,9 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+4
+E C F A
+A C E F
+F E C A
+A F C E
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +35,36 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int num, cont = 0;
+    cin >> num;
+    stack <st> pilha;
+    char letra;
 
+    f(0, num)
+    {
+        st pal, pal2;
+        fr(0, 4)
+        {
+            cin >> letra;
+            pal += letra;
+        }
+        pal2 = pal;
+        if(pilha.empty())
+        {
+            pilha.push("FACE");
+        }
+        reverse(pal2.begin(), pal2.end());
+
+        if(pilha.top() == pal2)
+        {
+            pilha.pop();
             cont++;
         }
+        else
+        {
+            pilha.push(pal);
+        }
     }
-    cout << endl;
-
+    cout << cont << endl;
     return 0;
 }

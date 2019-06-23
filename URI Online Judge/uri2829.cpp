@@ -1,9 +1,3 @@
-/*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
-*/
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -18,8 +12,7 @@ using namespace std;
 #define eps 1e-9
 #define mem(x, val) memset ((x), (val), sizeof (x))
 #define LSONE(s) ((s)&(-s))
-#define INF 0x3f3f3f3f3f3f3f3fLL
-typedef long long ll;
+typedef long long int ll;
 typedef unsigned long long int ull;
 typedef string st;
 typedef vector <string> vs;
@@ -29,40 +22,48 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
+
+bool comp(const st& P1, const st& P2)
+{
+    int i = 0, tam1 = P1.size(), tam2 = P2.size();
+
+    while (tolower(P1[i]) == tolower(P2[i]))
+    {
+        if(i == tam1 || i == tam2)
+            break;
+        i++;
+    }
+    //cout << i << " " << P1 << " " << P2 << endl;
+    if(tam1 == tam2)
+    {
+        if(i == tam1)
+            return P1 < P2;
+    }
+    
+    return (tolower(P1[i]) < tolower(P2[i]));
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int quant, n, num;
+
+    int quant;
+    st x;
     cin >> quant;
-    vector<int> v(quant);
+    vector<st> v(quant);
+
     f(0, quant)
     {
-        cin >> num;
-        v[i] = num; 
+        cin >> x;
+        v[i] = x;
     }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
+    sort(all(v), comp);
+
     f(0, quant)
     {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
-
-            cont++;
-        }
+        cout << v[i] << endl;
     }
-    cout << endl;
-
+ 
     return 0;
 }

@@ -1,8 +1,10 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+5 
+Samuel O 1 
+Fabricio L 1 
+Emanuel S 3 
+Kaio S 20 
+Hugo N 90 
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,7 +12,7 @@ using namespace std;
 #define f(inicio, fim) for(int i = inicio; i < fim; i++)
 #define fr(inicio, fim) for(int j = inicio; j < fim; j++)
 #define all(x) x.begin (), x.end ()
-#define sz(x) (int) x.size ()
+//#define sz(x) (int) x.size ()
 #define pb push_back
 #define mk make_pair
 #define fi first
@@ -29,40 +31,45 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
+typedef struct alunos
+{
+    st nome;
+    char regiao;
+    int dist;
+}Vans;
+
+bool comp(const Vans &v1, const Vans &v2)
+{
+    if(v1.dist != v2.dist)
+        return v1.dist < v2.dist;
+    else if(v1.regiao != v2.regiao)
+        return v1.regiao < v2.regiao;
+    else
+        return v1.nome < v2.nome;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int quant;
 
-            cont++;
+    while(cin >> quant)
+    {
+        vector<Vans> v(quant);
+
+        f(0, quant)
+        {
+            cin >> v[i].nome >> v[i].regiao >> v[i].dist;
+        }
+
+        sort(all(v),comp);
+
+        f(0, quant)
+        {
+            cout << v[i].nome << endl;
         }
     }
-    cout << endl;
 
     return 0;
 }

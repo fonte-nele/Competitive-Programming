@@ -1,8 +1,10 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+719
+1
+15
+110
+102
+0
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +36,19 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int fat[] = {1, 2, 6, 24, 120, 720, 5040, 40320};
+    string num;
 
-            cont++;
+    while(cin >> num && num != "0")
+    {
+        int soma = 0, tam = num.size();
+        f(0, (int)num.size())
+        {
+            soma += ((num[i] - '0') * fat[tam-1]);
+            tam--;
         }
+        cout << soma << endl;
     }
-    cout << endl;
 
     return 0;
 }

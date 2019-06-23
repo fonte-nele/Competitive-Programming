@@ -1,8 +1,32 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+6
+10
+15 5
+23 4
+21 2
+16 4
+19 5
+18 2
+2
+15
+47 12
+39 4
+5
+23
+43 9
+4 1
+17 2
+13 5
+54 17
+6
+7
+14 4
+21 2
+26 7
+18 4
+30 13
+10 2
+0
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,40 +53,37 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
+int mochila(int peso, vector<int> &val, vector<int> &p, int pos)
+{
+    if(pos == 0 || peso == 0)
+        return 0;
+
+    if(p[pos-1] > peso)
+        return mochila(peso, val, p, pos-1);
+    else
+        return max(val[pos-1] + mochila(peso-p[pos-1], val, p, pos-1), mochila(peso, val, p, pos-1));
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
+    int n, peso;
+    
+    while(cin >> n && n != 0)
     {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+        vector<int> val(n);
+        vector<int> p(n);
 
-            cont++;
-        }
+        cin >> peso;
+
+        f(0, n)
+            cin >> val[i] >> p[i];
+
+        int pos = n;//sizeof(val)/sizeof(val[0]); 
+        cout << mochila(peso, val, p, pos) << " min." << endl;
     }
-    cout << endl;
 
     return 0;
 }

@@ -1,8 +1,7 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+2 
+Foulupukki mielellaan saa kirjetta. doulupukkA.
+Joulupukku saapuu sinne huomenna. Joulupukke rakastaa sinua ja siskosi.
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +33,32 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n, ind, pos ;
+    string frase;
     cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    getline(cin, frase);
 
-            cont++;
+    while(n--)
+    {
+        ind = 0;
+        getline(cin, frase);
+        //cout << frase << endl;
+
+        pos = frase.find("oulupukk", ind);
+        while(pos != -1)
+        {
+            //cout << pos << endl;
+            frase[pos-1] = 'J';
+            frase[pos+8] = 'i';
+            ind+=8;
+            if(ind > frase.size())
+                break;
+            pos = frase.find("oulupukk", ind);
+            if(pos == -1)
+                break;
         }
+        cout << frase << endl;
     }
-    cout << endl;
 
     return 0;
 }

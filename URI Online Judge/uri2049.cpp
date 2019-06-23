@@ -1,8 +1,9 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+1234
+837384937292379450545045672392303485065402302373543504864694450034302
+23034
+837384937292379450545045672392303485065402302373543504864694450034302
+0
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +35,23 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int cont = 1;
+    string frase, pal;
 
-            cont++;
-        }
+    while(cin >> frase && frase != "0")
+    {
+        cin >> pal;
+
+        if(cont > 1)
+            cout << endl;
+        cout << "Instancia " << cont << endl;
+        if(pal.find(frase) != -1)
+            cout << "verdadeira" << endl;
+        else
+            cout << "falsa" << endl;
+
+        cont++;
     }
-    cout << endl;
 
     return 0;
 }

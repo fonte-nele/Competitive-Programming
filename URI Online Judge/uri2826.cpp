@@ -1,9 +1,3 @@
-/*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
-*/
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -18,8 +12,7 @@ using namespace std;
 #define eps 1e-9
 #define mem(x, val) memset ((x), (val), sizeof (x))
 #define LSONE(s) ((s)&(-s))
-#define INF 0x3f3f3f3f3f3f3f3fLL
-typedef long long ll;
+typedef long long int ll;
 typedef unsigned long long int ull;
 typedef string st;
 typedef vector <string> vs;
@@ -29,40 +22,42 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
-int main()
+int main() 
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    st pal1, pal2;
 
-            cont++;
-        }
+    cin >> pal1 >> pal2;
+
+    if(pal1 < pal2)
+    {
+        cout << pal1 << endl;
+        cout << pal2 << endl;
     }
-    cout << endl;
+    else
+    {
+        cout << pal2 << endl;
+        cout << pal1 << endl;
+    }
+
+    /*while(cin >> pal)
+    {
+        vector<char> v((int)pal.size());
+        
+        f(0, (int)pal.size())
+        {
+            v[i] = pal[i];
+        }
+        sort(all(v));
+
+        f(0, (int)v.size())
+        {
+            cout << v[i];
+        }
+        cout << endl;
+    }*/
 
     return 0;
 }

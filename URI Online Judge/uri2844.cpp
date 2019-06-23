@@ -1,9 +1,3 @@
-/*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
-*/
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -19,6 +13,7 @@ using namespace std;
 #define mem(x, val) memset ((x), (val), sizeof (x))
 #define LSONE(s) ((s)&(-s))
 #define INF 0x3f3f3f3f3f3f3f3fLL
+#define pi 3.1415
 typedef long long ll;
 typedef unsigned long long int ull;
 typedef string st;
@@ -31,38 +26,29 @@ typedef map <int, int> mii;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+	int atraso, reacao, escritaM, escritaV;
+	int mat, vin;
+	st frase;
 
-            cont++;
-        }
-    }
-    cout << endl;
+	cin >> atraso >> reacao >> escritaM;
+	mat = 2*atraso + reacao;
+	cin >> atraso >> reacao >> escritaV;
+	vin = 2*atraso + reacao;
 
-    return 0;
+	getline(cin, frase);
+	getline(cin, frase);
+	// cout << frase << endl;
+	int tam = (int)frase.size();
+	mat += (escritaM * tam);
+	vin += (escritaV * tam);
+
+	// cout << mat <<" " << vin << endl;
+	if(mat < vin)
+		cout << "Matheus" << endl;
+	else if(mat > vin)
+		cout << "Vinicius" << endl;
+	else
+		cout << "Empate" << endl;
+
+	return 0;
 }

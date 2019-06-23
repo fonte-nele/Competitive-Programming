@@ -1,8 +1,5 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+6
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,40 +26,27 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
+int total;
+void posicao(int i, int n)
+{
+    if(i == 1 && total)
+        return;
+    total++;
+    int mid = n / 2;
+    return i <= mid ? posicao(2 * i, n) : posicao(i - (n - i + 1), n);
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n;
     cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    total = 0;
+    posicao(1, n);
 
-            cont++;
-        }
-    }
-    cout << endl;
+    cout << total << endl;
 
     return 0;
 }

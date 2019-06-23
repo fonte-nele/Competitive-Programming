@@ -1,8 +1,11 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
 3
-9 33 5
+2 3
+1 1 2
+2 5
+1 2 2 1 2
+3 4
+1 2 3 1
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,7 +13,7 @@ using namespace std;
 #define f(inicio, fim) for(int i = inicio; i < fim; i++)
 #define fr(inicio, fim) for(int j = inicio; j < fim; j++)
 #define all(x) x.begin (), x.end ()
-#define sz(x) (int) x.size ()
+//#define sz(x) (int) x.size ()
 #define pb push_back
 #define mk make_pair
 #define fi first
@@ -33,36 +36,36 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int quant, n, m, cand, maior, pos;
 
-            cont++;
+    cin >> quant;
+    while(quant--)
+    {
+        cin >> n >> m;
+        map<int, int> cont;
+        maior = 0;
+
+        f(0, m)
+        {
+            cin >> cand;
+            cont[cand]++;
         }
+        f(1, n+1)
+        {
+            if(cont[i] > maior)
+            {
+                maior = cont[i];
+                pos = i;
+            }
+        }
+        //out << "maior " << maior << endl; 
+        //cout << "mcad  " << pos << endl; 
+        if((((double)maior/m)*100) > 50.0)
+            cout << pos << endl;
+        else
+            cout << -1 << endl;
+
     }
-    cout << endl;
 
     return 0;
 }

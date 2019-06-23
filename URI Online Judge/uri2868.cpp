@@ -1,8 +1,8 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
 3
-9 33 5
+7 + 6 = 10
+7 x 6 = 50
+7 - 6 = 5
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +34,27 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n, num1, num2, resultado, resp, dif;
+    string op, ig;
     cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
 
-            cont++;
-        }
+    f(0, n){
+        cin >> num1 >> op >> num2 >> ig >> resultado;
+        //cout << num1 << " " << num2 << " " << resultado << endl;  
+        if(op == "+")
+            resp = num1 + num2;
+        else if(op == "x")
+            resp = num1 * num2;
+        else
+            resp = num1 - num2;
+
+        dif = abs(resp - resultado);
+        //cout << resp << " " << resultado << " " << dif << endl;
+        cout << "E";
+        fr(0, dif)
+            cout << "r";
+        cout << "ou!" << endl;
     }
-    cout << endl;
 
     return 0;
 }

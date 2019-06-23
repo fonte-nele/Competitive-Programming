@@ -1,8 +1,6 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+p 
+papagaio 
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +32,24 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int cont = 0, total = 0;
+    string frase;
+    char p;
 
-            cont++;
+    cin >> p;
+
+    while(getline(cin, frase, ' '))
+    { 
+        if(frase != ""){
+            //cout << frase << endl;
+
+            if(frase.find(p) != -1)
+                cont++;
+
+            total++;
         }
     }
-    cout << endl;
-
+    //cout << cont << endl;
+    cout << fixed << setprecision(1) << (double)cont/((double)total/100)<< endl;
     return 0;
 }

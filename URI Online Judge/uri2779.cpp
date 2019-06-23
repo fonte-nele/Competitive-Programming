@@ -1,8 +1,9 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
+10
 3
-9 33 5
+5
+8
+3
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,40 +30,23 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
-int main()
+int main ()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
 
-            cont++;
-        }
+    int n, m, num;
+    cin >> n >> m;
+    set<int> v;
+
+    f(0, m)
+    {
+        cin >> num;
+        v.insert(num);
     }
-    cout << endl;
+
+    
+    cout << n - v.size() << endl;
 
     return 0;
 }

@@ -1,8 +1,9 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
 3
-9 33 5
+3 4
+81 28 240 10
+40 10 100 240
+20 180 110 35
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +35,39 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
+    int n, m, maior = 0, soma;
+    cin >> n >> m;
+    vector<vector<int> > mat(n);
     f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
+        mat[i].resize(m);
+
+    f(0, n){
+        fr(0, m)
+            cin >> mat[i][j];
     }
-    int cont = 0;
-    f(0, quant)
+    for(int i = 0; i < n; i++)
     {
-        if(apagar[v[i]] == 0)
+        soma = 0;
+        for(int j = 0; j < m; j++)
         {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
-
-            cont++;
+            soma += mat[i][j];
         }
+        if(soma > maior)
+            maior = soma;
+        //cout << soma << endl;
     }
-    cout << endl;
+    for(int i = 0; i < m; i++)
+    {
+        soma = 0;
+        for(int j = 0; j < n; j++)
+        {
+            soma += mat[j][i];
+        }
+        if(soma > maior)
+            maior = soma;
+        //cout << soma << endl;
+    }
 
+    cout << maior << endl;
     return 0;
 }

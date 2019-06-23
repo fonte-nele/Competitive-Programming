@@ -1,8 +1,12 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+sanduicheiche
+barrilarril
+ratoato
+sol
+coliseueu
+queijoijo
+astroastro
+a
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,40 +33,37 @@ typedef vector <int> vi;
 typedef vector <ii> vii;
 typedef map <int, int> mii;
 
+bool endsWith(string &a, string &b) {
+    if (a.length() < b.length()) 
+        return false;
+    return a.substr(a.length() - b.length()) == b;
+}
+
+string resp(string palavra)
+{
+    string a = palavra;
+    string b = "";
+    int tam = palavra.size();
+    f(1, tam+1){
+        string aa = palavra.substr(0, palavra.length() - i);
+        string bb = palavra.substr(palavra.length() - i);
+        if (endsWith(aa, bb)) a = aa, b = bb;
+    }
+    return a;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    int soma, contador;
+    string palavra;
 
-            cont++;
-        }
+    while(cin >> palavra)
+    {
+        cout << resp(palavra) << endl;
     }
-    cout << endl;
 
     return 0;
 }

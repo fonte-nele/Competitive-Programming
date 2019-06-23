@@ -1,8 +1,12 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+6 3
+2 1 3
+3 1 2 3
+2 1 3
+2 1 2
+2 2 3
+1 2
+3 1 2 3
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +38,36 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n;
     cin >> n;
-    int apagar[100005] = {0};
+
+    vector<int> v(n);
+    vector<vector<int> > ocorrencias(n);
+    ocorrencias.assign(101, vector<int> ());
     f(0, n)
     {
-        cin >> num;
-        apagar[num] = 1;;
+        cin >> v[i];
+        ocorrencias[v[i]].push_back(i);
     }
-    int cont = 0;
-    f(0, quant)
+    f(0, n)
     {
-        if(apagar[v[i]] == 0)
+        int menor = n+1, melhor = -1;
+        fr(v[i]+1, 101)
         {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
-
-            cont++;
+            auto it = upper_bound(ocorrencias[j].begin(), ocorrencias[j].end(),i);
+            if(it == ocorrencias[j].end())
+                continue;
+            if(*it < menor){
+                menor = *it;
+                melhor = j;
+            }
         }
+        if(menor != n+1)
+            cout << melhor;
+        else
+            cout << "*";
+        cout << (i == n-1 ? '\n' : ' ');
     }
-    cout << endl;
 
     return 0;
 }

@@ -1,8 +1,18 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+3 3
+1 1 1
+1 1 1
+1 1 1
+2 5
+6 6 6 6 6
+6 6 6 6 6
+2 2
+41 47 
+34 40 
+3 3
+29 4 18 
+18 22 44 
+5 5 1
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +44,27 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
+    int m, n, soma, valor, saca;
+    while(cin >> m >> n)
     {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
+        soma = saca = 0;
+        f(0, m)
         {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
-
-            cont++;
+            f(0, n)
+            {
+                cin >> valor;
+                soma += valor;
+            }
         }
+
+        while(soma >= 60)
+        {
+            soma -= 60;
+            saca++;
+        }
+
+        cout << saca << " saca(s) e " << soma << " litro(s)" << endl;
     }
-    cout << endl;
 
     return 0;
 }

@@ -1,8 +1,6 @@
 /*input
 8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+1 -1 -1 1 -1 1 1 -1
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -18,7 +16,6 @@ using namespace std;
 #define eps 1e-9
 #define mem(x, val) memset ((x), (val), sizeof (x))
 #define LSONE(s) ((s)&(-s))
-#define INF 0x3f3f3f3f3f3f3f3fLL
 typedef long long ll;
 typedef unsigned long long int ull;
 typedef string st;
@@ -33,36 +30,55 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int quant, n, num;
+
+    int quant, cor, pos;
     cin >> quant;
     vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    vector<int> cores(quant);
 
-            cont++;
+    f(0, quant)
+    {
+        cin >> v[i];
+    }
+    f(0, quant-1)
+    {
+        if(v[i] == v[i+1])
+        {
+            //cout << "111preta" << endl;
+            cores[i] = 1;
+        }
+        else
+        {
+            //cout << "111branca" << endl;
+            cores[i] = -1;
         }
     }
-    cout << endl;
+    //cout << endl;
+    pos = quant-2;
+    while(pos > 1)
+    {
+        for(int i = 0; i < pos; i++)
+        {
+            if(cores[i] == cores[i+1])
+            {
+                //cout << "222preta" << i << endl;
+                cores[i] = 1;
+            }
+            else
+            {
+                //cout << "222branca" << i << endl;
+                cores[i] = -1;
+            }
+        }
+        //cout << endl;
+        pos--;
+    }
+
+
+    if(cores[0] == cores[1])
+        cout << "preta" << endl;
+    else
+        cout << "branca" << endl;
 
     return 0;
 }

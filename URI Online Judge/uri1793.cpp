@@ -1,8 +1,13 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
+1
+5
+2
+12 25
+2
+13 16
+5
+15 20 29 31 50
+0
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,7 +15,7 @@ using namespace std;
 #define f(inicio, fim) for(int i = inicio; i < fim; i++)
 #define fr(inicio, fim) for(int j = inicio; j < fim; j++)
 #define all(x) x.begin (), x.end ()
-#define sz(x) (int) x.size ()
+//#define sz(x) (int) x.size ()
 #define pb push_back
 #define mk make_pair
 #define fi first
@@ -33,36 +38,35 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
+    int n;
+
+    while(cin >> n && n != 0)
     {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
+        int soma = 0;
+        int atual, ant = -1;
+        f(0, n)
         {
-            if(cont == 0)
-                cout << v[i];
+            cin >> atual;
+            if(ant == -1)
+            {
+                ant = atual;
+                soma += 10;
+            }
             else
-                cout << " " << v[i];
+            {
+                if(atual - ant > 10)
+                    soma += 10;
+                else
+                    soma += (atual - ant);
 
-            cont++;
+                ant = atual;
+            }
+
+            
+            //cout << v[i] << endl;
         }
-    }
-    cout << endl;
 
+        cout << soma << endl;
+    }
     return 0;
 }

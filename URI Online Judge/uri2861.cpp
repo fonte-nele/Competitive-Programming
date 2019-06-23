@@ -1,8 +1,8 @@
 /*input
-8
-5 100 9 81 70 33 2 1000
 3
-9 33 5
+NoTApasCAL
+atEQUEatabELATERMINE
+zoEIrrRRRRa
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,35 +34,22 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
+    int n;
+    string frase;
     cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+    getline(cin, frase);
 
-            cont++;
+    f(0, n){
+        string resp = "";
+        getline(cin, frase);
+        f(0, (int)frase.size()){
+            if(islower(frase[i]))
+                resp += frase[i];
         }
+            
+        reverse(resp.begin(), resp.end());
+        cout << resp << endl;
     }
-    cout << endl;
 
     return 0;
 }

@@ -1,9 +1,3 @@
-/*input
-8
-5 100 9 81 70 33 2 1000
-3
-9 33 5
-*/
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -31,38 +25,11 @@ typedef map <int, int> mii;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    
-    int quant, n, num;
-    cin >> quant;
-    vector<int> v(quant);
-    f(0, quant)
-    {
-        cin >> num;
-        v[i] = num; 
-    }
-    cin >> n;
-    int apagar[100005] = {0};
-    f(0, n)
-    {
-        cin >> num;
-        apagar[num] = 1;;
-    }
-    int cont = 0;
-    f(0, quant)
-    {
-        if(apagar[v[i]] == 0)
-        {
-            if(cont == 0)
-                cout << v[i];
-            else
-                cout << " " << v[i];
+	int num;
 
-            cont++;
-        }
-    }
-    cout << endl;
+	cin >> num;
 
-    return 0;
+	cout << num+1 << endl;
+
+	return 0;
 }

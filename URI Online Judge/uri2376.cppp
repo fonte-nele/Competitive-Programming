@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main ()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    vector <int> game, game2, game3, game4;
+    int x, y;
+
+    for (int i = 0; i < 16; i++)
+        game.push_back (i);
+
+    //oitavas
+    for (int i = 0; i < 16; i+= 2)
+    {
+        cin >> x >> y;
+
+        if (x > y)
+            game2.push_back (game[i]);
+        else
+            game2.push_back (game[i + 1]);
+    }
+
+    //quartas 
+    for (int i = 0; i < 8; i+= 2)
+    {
+        cin >> x >> y;
+
+        if (x > y)
+            game3.push_back (game2[i]);
+        else
+            game3.push_back (game2[i + 1]);
+    }
+
+    
+    //semi
+    for (int i = 0; i < 4; i+= 2)
+    {
+        cin >> x >> y;
+
+        if (x > y)
+            game4.push_back (game3[i]);
+        else
+            game4.push_back (game3[i + 1]);
+    }
+
+    cin >> x >> y;
+
+    if (x > y)
+        printf ("%c\n", toupper (game4[0] + 'a'));
+    else
+        printf ("%c\n", toupper (game4[1] + 'a'));
+
+
+    return 0;
+}

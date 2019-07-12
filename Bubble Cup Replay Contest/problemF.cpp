@@ -40,7 +40,34 @@ int main ()
 
     cin >> a >> b >> c >> d;
 
-    
+    if(a > c)
+    	cout << "no" << endl;
+    else if(b <= d){
+    	cout << "yes" << endl;
+    }else{
+    	double dc = pow(a, 2) + pow(b,2);
+    	if(dc > (pow(c, 2) + pow(d,2))){
+    		cout << "no" << endl;
+    	}
+    	else{
+    		dc = sqrt(dc);
+    		double a1 = sqrt(pow(a, 2) + pow(dc,2));
+    		double b1 = sqrt(pow(b, 2) + pow(dc,2));
+    		double c1 = sqrt(pow(c, 2) + pow(dc,2));
+    		double d1 = sqrt(pow(d, 2) + pow(dc,2));
+
+    		if((a1>=a && b1>=a) || (a1>=a && c1>=a) || (a1>=a && d1>=a))
+    			cout << "yes" << endl;
+    		else if((b1>=a && a1>=a) || (b1>=a && c1>=a) || (b1>=a && d1>=a))
+    			cout << "yes" << endl;
+    		else if((c1>=a && a1>=a) || (c1>=a && b1>=a) || (c1>=a && d1>=a))
+    			cout << "yes" << endl;
+    		else if((d1>=a && a1>=a) || (d1>=a && b1>=a) || (d1>=a && c1>=a))
+    			cout << "yes" << endl;
+    		else
+    			cout << "no" << endl;
+    	}
+    }
 
     return 0;
 }
